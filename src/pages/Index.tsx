@@ -2,93 +2,164 @@
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Briefcase, GraduationCap, LineChart, Users } from "lucide-react";
+import { 
+  Briefcase, 
+  GraduationCap, 
+  LineChart, 
+  Users, 
+  Trophy,
+  Globe,
+  Target,
+  Lightbulb
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Index() {
   const businessFeatures = [
     {
-      title: "Business Consulting",
-      description: "Expert advice to optimize your business operations.",
+      title: "Strategic Consulting",
+      description: "Transform your business with expert strategic guidance and innovation.",
       icon: Briefcase,
       features: [
-        "Strategic Planning",
-        "Process Optimization",
-        "Market Analysis",
-        "Growth Strategy"
+        "Business Model Innovation",
+        "Digital Strategy",
+        "Market Expansion",
+        "Performance Optimization"
       ]
     },
     {
-      title: "Technology Solutions",
-      description: "Cutting-edge tech to drive your business forward.",
+      title: "Digital Solutions",
+      description: "Leverage cutting-edge technology to drive growth and efficiency.",
       icon: LineChart,
       features: [
         "Digital Transformation",
-        "Cloud Solutions",
+        "Cloud Integration",
         "Custom Software",
-        "IT Infrastructure"
+        "Data Analytics"
+      ]
+    },
+    {
+      title: "Global Excellence",
+      description: "Connect with international markets and opportunities.",
+      icon: Globe,
+      features: [
+        "International Markets",
+        "Cross-border Operations",
+        "Global Partnerships",
+        "Market Research"
       ]
     }
   ];
 
   const educationFeatures = [
     {
-      title: "Expert Tutoring",
-      description: "Learn from experienced professionals in various fields.",
+      title: "Premium Tutoring",
+      description: "Learn from Tunisia's leading experts in academia and industry.",
       icon: GraduationCap,
       features: [
-        "Mathematics",
-        "Sciences",
-        "Languages",
-        "Test Preparation"
+        "Advanced Mathematics",
+        "Engineering Sciences",
+        "Business Studies",
+        "Language Mastery"
       ]
     },
     {
       title: "Personalized Learning",
-      description: "Tailored programs to meet your educational goals.",
-      icon: Users,
+      description: "Tailored educational programs designed for your success.",
+      icon: Target,
       features: [
-        "One-on-One Sessions",
-        "Group Classes",
-        "Online Learning",
-        "Interactive Workshops"
+        "Individual Attention",
+        "Flexible Scheduling",
+        "Progress Tracking",
+        "Custom Curriculum"
       ]
+    },
+    {
+      title: "Innovation Hub",
+      description: "Access to cutting-edge learning resources and methodologies.",
+      icon: Lightbulb,
+      features: [
+        "Digital Learning Tools",
+        "Interactive Sessions",
+        "Project-Based Learning",
+        "Research Support"
+      ]
+    }
+  ];
+
+  const achievements = [
+    {
+      number: "1000+",
+      label: "Satisfied Clients",
+      icon: Trophy
+    },
+    {
+      number: "95%",
+      label: "Success Rate",
+      icon: Target
+    },
+    {
+      number: "50+",
+      label: "Expert Consultants",
+      icon: Users
     }
   ];
 
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-20 text-center space-y-8">
-        <h1 className="text-5xl font-bold tracking-tight">
-          International House of Sciences
-        </h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Your partner in business excellence and educational success. We provide comprehensive
-          business consulting services and expert educational support.
-        </p>
-        <div className="flex gap-4 justify-center">
-          <Button asChild size="lg">
-            <Link to="/ishtgroup">Business Solutions</Link>
-          </Button>
-          <Button asChild size="lg" variant="outline">
-            <Link to="/tutoring">Online Tutoring</Link>
-          </Button>
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-background" />
+        <div className="relative container max-w-7xl mx-auto px-4 text-center space-y-8">
+          <div className="animate-fade-in">
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
+              International House of Sciences
+            </h1>
+            <p className="mt-6 text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+              Empowering Excellence in Business and Education
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
+            <Button asChild size="lg" className="min-w-[200px]">
+              <Link to="/ishtgroup">Business Solutions</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="min-w-[200px]">
+              <Link to="/tutoring">Online Tutoring</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Achievements Section */}
+      <section className="py-16 bg-muted/50">
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {achievements.map((achievement, index) => (
+              <div 
+                key={index}
+                className="flex flex-col items-center text-center p-6 rounded-lg bg-background shadow-sm hover:shadow-md transition-shadow"
+              >
+                <achievement.icon className="h-12 w-12 text-primary mb-4" />
+                <span className="text-4xl font-bold text-primary mb-2">{achievement.number}</span>
+                <span className="text-muted-foreground">{achievement.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Business Solutions Section */}
-      <section className="py-16 bg-muted/50">
-        <div className="container max-w-7xl mx-auto">
-          <div className="text-center mb-12">
+      <section className="py-16">
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12 space-y-4">
             <h2 className="text-3xl font-bold tracking-tight">Business Solutions</h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Empowering businesses with innovative solutions and strategic guidance
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Empowering businesses with innovative solutions and strategic guidance for sustainable growth and success
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {businessFeatures.map((feature, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <CardHeader>
                   <div className="flex items-center gap-4">
                     <div className="p-2 rounded-lg bg-primary/10">
@@ -115,17 +186,17 @@ export default function Index() {
       </section>
 
       {/* Education Services Section */}
-      <section className="py-16">
-        <div className="container max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight">Educational Services</h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Personalized learning experiences for academic success
+      <section className="py-16 bg-muted/50">
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12 space-y-4">
+            <h2 className="text-3xl font-bold tracking-tight">Educational Excellence</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Transform your learning journey with personalized education programs and expert guidance
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {educationFeatures.map((feature, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <CardHeader>
                   <div className="flex items-center gap-4">
                     <div className="p-2 rounded-lg bg-primary/10">
@@ -152,15 +223,20 @@ export default function Index() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 bg-muted/50">
-        <div className="container max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold tracking-tight mb-4">Get in Touch</h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Have questions? We're here to help.
+      <section className="py-20 bg-gradient-to-br from-primary/5 to-background">
+        <div className="container max-w-7xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold tracking-tight mb-4">Ready to Get Started?</h2>
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Join hundreds of satisfied clients who have transformed their businesses and educational journeys with IHS Group.
           </p>
-          <Button asChild size="lg">
-            <Link to="/contact">Contact Us</Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button asChild size="lg">
+              <Link to="/contact">Contact Us</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link to="/about">Learn More</Link>
+            </Button>
+          </div>
         </div>
       </section>
     </Layout>
