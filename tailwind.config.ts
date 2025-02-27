@@ -52,8 +52,8 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         tunisian: {
-          red: "#E70013",
-          white: "#FFFFFF",
+          red: "#8B2E29",
+          blue: "#1E3F54",
         },
       },
       borderRadius: {
