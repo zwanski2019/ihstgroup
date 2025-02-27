@@ -26,8 +26,13 @@ export function Layout({ children, section }: LayoutProps) {
       <header className="border-b">
         <nav className="container max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="text-2xl font-bold text-gradient">
-              IHS Group
+            <Link to="/" className="flex items-center gap-3">
+              <img 
+                src="/lovable-uploads/5d1618ae-a48b-44bd-8480-e173abb8e89c.png" 
+                alt="IHS Group Logo" 
+                className="h-12 w-auto"
+              />
+              <span className="text-2xl font-bold text-gradient hidden sm:inline">IHS Group</span>
             </Link>
             <div className="flex items-center gap-6">
               {section === "ishtgroup" ? (
@@ -117,6 +122,13 @@ export function Layout({ children, section }: LayoutProps) {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <h3 className="text-lg font-semibold mb-4">IHS Group</h3>
+              <div className="flex items-center gap-2 mb-4">
+                <img 
+                  src="/lovable-uploads/5d1618ae-a48b-44bd-8480-e173abb8e89c.png" 
+                  alt="IHS Group Logo" 
+                  className="h-10 w-auto"
+                />
+              </div>
               <p className="text-sm text-muted-foreground">
                 The premier educational and business consultancy in Tunisia, providing world-class services since 2010.
               </p>

@@ -111,7 +111,12 @@ export default function Index() {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-background" />
         <div className="relative container max-w-7xl mx-auto px-4 text-center space-y-8">
-          <div className="animate-fade-in">
+          <div className="animate-fade-in flex flex-col items-center">
+            <img 
+              src="/lovable-uploads/5d1618ae-a48b-44bd-8480-e173abb8e89c.png" 
+              alt="International House of Sciences" 
+              className="h-32 md:h-40 w-auto mb-6"
+            />
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
               International House of Sciences
             </h1>
