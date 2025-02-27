@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 // Main Pages
 import Index from "./pages/Index";
@@ -31,38 +32,40 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            {/* Main Routes */}
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/auth/login" element={<Login />} />
-            <Route path="/auth/register" element={<Register />} />
+    <ThemeProvider defaultTheme="light">
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              {/* Main Routes */}
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/auth/login" element={<Login />} />
+              <Route path="/auth/register" element={<Register />} />
 
-            {/* IshtGroup Routes */}
-            <Route path="/ishtgroup" element={<IshtGroupHome />} />
-            <Route path="/ishtgroup/services" element={<IshtGroupServices />} />
-            <Route path="/ishtgroup/about" element={<IshtGroupAbout />} />
-            <Route path="/ishtgroup/contact" element={<IshtGroupContact />} />
+              {/* IshtGroup Routes */}
+              <Route path="/ishtgroup" element={<IshtGroupHome />} />
+              <Route path="/ishtgroup/services" element={<IshtGroupServices />} />
+              <Route path="/ishtgroup/about" element={<IshtGroupAbout />} />
+              <Route path="/ishtgroup/contact" element={<IshtGroupContact />} />
 
-            {/* Tutoring Routes */}
-            <Route path="/tutoring" element={<TutoringHome />} />
-            <Route path="/tutoring/courses" element={<TutoringCourses />} />
-            <Route path="/tutoring/tutors" element={<TutoringTutors />} />
-            <Route path="/tutoring/resources" element={<TutoringResources />} />
+              {/* Tutoring Routes */}
+              <Route path="/tutoring" element={<TutoringHome />} />
+              <Route path="/tutoring/courses" element={<TutoringCourses />} />
+              <Route path="/tutoring/tutors" element={<TutoringTutors />} />
+              <Route path="/tutoring/resources" element={<TutoringResources />} />
 
-            {/* Catch-all route for 404 */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </AuthProvider>
+              {/* Catch-all route for 404 */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
