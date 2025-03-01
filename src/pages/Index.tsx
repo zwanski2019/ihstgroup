@@ -1,4 +1,3 @@
-
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +13,9 @@ import {
   Search,
   Star,
   Clock,
-  BookOpen
+  BookOpen,
+  Shield,
+  Users as User
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -283,6 +284,71 @@ export default function Index() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* User Portal Access Section - New */}
+      <section className="py-12 bg-gradient-to-r from-primary/5 to-background">
+        <div className="container max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-center">Access User Portals</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="hover:shadow-lg transition-all hover:-translate-y-1">
+              <CardHeader>
+                <div className="flex items-center gap-4">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <Shield className="h-6 w-6 text-primary" />
+                  </div>
+                  <CardTitle>Admin Portal</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-muted-foreground">
+                  Access the administration dashboard to manage users, courses, and platform settings.
+                </p>
+                <Button asChild variant="outline" className="w-full">
+                  <Link to="/admin/dashboard">Access Admin Portal</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-all hover:-translate-y-1">
+              <CardHeader>
+                <div className="flex items-center gap-4">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <Users className="h-6 w-6 text-primary" />
+                  </div>
+                  <CardTitle>Parent Portal</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-muted-foreground">
+                  Monitor your children's progress, manage enrollments, and communicate with tutors.
+                </p>
+                <Button asChild variant="outline" className="w-full">
+                  <Link to="/parent/dashboard">Access Parent Portal</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-all hover:-translate-y-1">
+              <CardHeader>
+                <div className="flex items-center gap-4">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <User className="h-6 w-6 text-primary" />
+                  </div>
+                  <CardTitle>Student Portal</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-muted-foreground">
+                  Access your courses, track your progress, and engage with learning materials.
+                </p>
+                <Button asChild variant="outline" className="w-full">
+                  <Link to="/dashboard">Access Student Portal</Link>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

@@ -207,19 +207,30 @@ export function Layout({ children, section }: LayoutProps) {
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Contact</h3>
-              <address className="not-italic">
-                <p className="text-sm text-muted-foreground">Berges du Lac, Tunis</p>
-                <p className="text-sm text-muted-foreground">Tunisia</p>
-                <p className="text-sm text-muted-foreground">+216 24 225 975</p>
-                <p className="text-sm text-muted-foreground">contact@ihsgroup.tn</p>
-              </address>
+              <h3 className="text-lg font-semibold mb-4">User Portals</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/admin/dashboard" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Admin Portal
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/parent/dashboard" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Parent Portal
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Student Portal
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
           <div className="border-t mt-6 pt-6">
             <div className="flex justify-between items-center">
               <p className="text-sm text-muted-foreground">
-                © 2024 IHS Group. All rights reserved.
+                © 2025 IHS Group. All rights reserved.
               </p>
               <div className="flex gap-4">
                 <Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
