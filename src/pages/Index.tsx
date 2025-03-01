@@ -113,7 +113,7 @@ export default function Index() {
   const featuredCourses = [
     {
       title: "Advanced Business Strategy",
-      instructor: "Dr. Sarah Johnson",
+      instructor: "replace with the name of the instructor example:zwanski",
       rating: 4.8,
       students: 1243,
       duration: "12 weeks",
@@ -122,7 +122,7 @@ export default function Index() {
     },
     {
       title: "Mathematics for Engineers",
-      instructor: "Prof. Michael Chen",
+      instructor: "replace with the name of the instructor example:zwanski",
       rating: 4.9,
       students: 978,
       duration: "10 weeks",
@@ -131,7 +131,7 @@ export default function Index() {
     },
     {
       title: "French for Professionals",
-      instructor: "Sophie Martin",
+      instructor: "replace with the name of the instructor example:zwanski",
       rating: 4.7,
       students: 815,
       duration: "8 weeks",
@@ -140,7 +140,7 @@ export default function Index() {
     },
     {
       title: "Data Science Fundamentals",
-      instructor: "Dr. Ahmad Nasri",
+      instructor: "replace with the name of the instructor example:zwanski",
       rating: 4.9,
       students: 1562,
       duration: "14 weeks",
@@ -160,21 +160,21 @@ export default function Index() {
 
   const topInstructors = [
     {
-      name: "Dr. Sarah Johnson",
+      name: "replace with the name of the instructor example:zwanski",
       specialty: "Business Strategy",
       courses: 12,
       students: 4500,
       rating: 4.9
     },
     {
-      name: "Prof. Michael Chen",
+      name: "replace with the name of the instructor example:zwanski",
       specialty: "Applied Mathematics",
       courses: 8,
       students: 3200,
       rating: 4.8
     },
     {
-      name: "Sophie Martin",
+      name: "replace with the name of the instructor example:zwanski",
       specialty: "Languages",
       courses: 15,
       students: 5600,
