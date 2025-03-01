@@ -3,7 +3,16 @@ import { Link } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "./ui/button";
-import { Globe, BookOpen, User, LogOut } from "lucide-react";
+import { Globe, BookOpen, User, LogOut, Shield, Users } from "lucide-react";
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback } from "./ui/avatar";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -11,7 +20,7 @@ interface LayoutProps {
 }
 
 export function Layout({ children, section }: LayoutProps) {
-  const { user, signOut } = useAuth();
+  const { user, signOut, isAdmin, isParent } = useAuth();
 
   const handleSignOut = async () => {
     try {
@@ -91,14 +100,55 @@ export function Layout({ children, section }: LayoutProps) {
               <div className="flex items-center gap-2">
                 <ThemeToggle />
                 {user ? (
-                  <div className="flex items-center gap-2">
-                    <Button variant="ghost" size="icon" className="rounded-full">
-                      <User className="h-5 w-5" />
-                    </Button>
-                    <Button variant="ghost" size="icon" onClick={handleSignOut} className="rounded-full">
-                      <LogOut className="h-5 w-5" />
-                    </Button>
-                  </div>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" size="icon" className="rounded-full">
+                        <Avatar>
+                          <AvatarFallback className="bg-primary text-primary-foreground">
+                            {user?.email?.substring(0, 2).toUpperCase()}
+                          </AvatarFallback>
+                        </Avatar>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuLabel>
+                        {user.email}
+                        {user.role && <div className="text-xs text-muted-foreground mt-1 capitalize">{user.role}</div>}
+                      </DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      
+                      {isAdmin() && (
+                        <DropdownMenuItem asChild>
+                          <Link to="/admin/dashboard" className="flex items-center">
+                            <Shield className="mr-2 h-4 w-4" />
+                            Admin Dashboard
+                          </Link>
+                        </DropdownMenuItem>
+                      )}
+                      
+                      {isParent() && (
+                        <DropdownMenuItem asChild>
+                          <Link to="/parent/dashboard" className="flex items-center">
+                            <Users className="mr-2 h-4 w-4" />
+                            Parent Dashboard
+                          </Link>
+                        </DropdownMenuItem>
+                      )}
+                      
+                      <DropdownMenuItem asChild>
+                        <Link to="/dashboard" className="flex items-center">
+                          <User className="mr-2 h-4 w-4" />
+                          My Dashboard
+                        </Link>
+                      </DropdownMenuItem>
+                      
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem onClick={handleSignOut} className="text-red-500">
+                        <LogOut className="mr-2 h-4 w-4" />
+                        Sign Out
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 ) : (
                   <Button asChild variant="outline" size="sm">
                     <Link to="/auth/login">Sign In</Link>

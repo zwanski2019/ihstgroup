@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -28,45 +27,55 @@ import TutoringCourses from "./pages/tutoring/Courses";
 import TutoringTutors from "./pages/tutoring/Tutors";
 import TutoringResources from "./pages/tutoring/Resources";
 
+// Admin Pages
+import AdminDashboard from '@/pages/admin/AdminDashboard';
+import ParentDashboard from '@/pages/parent/ParentDashboard';
+
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="light">
-      <AuthProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              {/* Main Routes */}
-              <Route path="/" element={<Index />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/faq" element={<FAQ />} />
-              <Route path="/auth/login" element={<Login />} />
-              <Route path="/auth/register" element={<Register />} />
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider defaultTheme="light">
+        <AuthProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                {/* Main Routes */}
+                <Route path="/" element={<Index />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/faq" element={<FAQ />} />
+                <Route path="/auth/login" element={<Login />} />
+                <Route path="/auth/register" element={<Register />} />
 
-              {/* IshtGroup Routes */}
-              <Route path="/ishtgroup" element={<IshtGroupHome />} />
-              <Route path="/ishtgroup/services" element={<IshtGroupServices />} />
-              <Route path="/ishtgroup/about" element={<IshtGroupAbout />} />
-              <Route path="/ishtgroup/contact" element={<IshtGroupContact />} />
+                {/* IshtGroup Routes */}
+                <Route path="/ishtgroup" element={<IshtGroupHome />} />
+                <Route path="/ishtgroup/services" element={<IshtGroupServices />} />
+                <Route path="/ishtgroup/about" element={<IshtGroupAbout />} />
+                <Route path="/ishtgroup/contact" element={<IshtGroupContact />} />
 
-              {/* Tutoring Routes */}
-              <Route path="/tutoring" element={<TutoringHome />} />
-              <Route path="/tutoring/courses" element={<TutoringCourses />} />
-              <Route path="/tutoring/tutors" element={<TutoringTutors />} />
-              <Route path="/tutoring/resources" element={<TutoringResources />} />
+                {/* Tutoring Routes */}
+                <Route path="/tutoring" element={<TutoringHome />} />
+                <Route path="/tutoring/courses" element={<TutoringCourses />} />
+                <Route path="/tutoring/tutors" element={<TutoringTutors />} />
+                <Route path="/tutoring/resources" element={<TutoringResources />} />
 
-              {/* Catch-all route for 404 */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </AuthProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
-);
+                {/* Admin Routes */}
+                <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                <Route path="/parent/dashboard" element={<ParentDashboard />} />
+
+                {/* Catch-all route for 404 */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
+  );
+}
 
 export default App;

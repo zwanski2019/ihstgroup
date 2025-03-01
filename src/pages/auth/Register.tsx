@@ -7,10 +7,13 @@ import { Label } from '@/components/ui/label';
 import { Layout } from '@/components/Layout';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { UserRole } from '@/contexts/AuthContext';
 
 export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState<UserRole>('student');
   const [loading, setLoading] = useState(false);
   const { signUp } = useAuth();
   const navigate = useNavigate();
@@ -19,7 +22,7 @@ export default function Register() {
     e.preventDefault();
     try {
       setLoading(true);
-      await signUp(email, password);
+      await signUp(email, password, role);
       toast.success('Registration successful! Please check your email to verify your account.');
       navigate('/auth/login');
     } catch (error) {
@@ -60,6 +63,24 @@ export default function Register() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+          </div>
+
+          <div className="space-y-2">
+            <Label>Account Type</Label>
+            <RadioGroup value={role} onValueChange={(value) => setRole(value as UserRole)}>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="student" id="student" />
+                <Label htmlFor="student" className="cursor-pointer">Student</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="parent" id="parent" />
+                <Label htmlFor="parent" className="cursor-pointer">Parent</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="tutor" id="tutor" />
+                <Label htmlFor="tutor" className="cursor-pointer">Tutor</Label>
+              </div>
+            </RadioGroup>
           </div>
 
           <Button type="submit" className="w-full" disabled={loading}>

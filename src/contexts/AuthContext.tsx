@@ -3,30 +3,85 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { User } from '@supabase/supabase-js';
 
+export type UserRole = 'admin' | 'parent' | 'student' | 'tutor';
+
+interface AuthUser extends User {
+  role?: UserRole;
+}
+
 interface AuthContextType {
-  user: User | null;
+  user: AuthUser | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string, role?: UserRole) => Promise<void>;
   signOut: () => Promise<void>;
+  isAdmin: () => boolean;
+  isParent: () => boolean;
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
+
+  // Helper functions to check roles
+  const isAdmin = () => user?.role === 'admin';
+  const isParent = () => user?.role === 'parent';
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
+      if (session?.user) {
+        // In a real app, we would fetch the role from a user_roles table
+        // Here we'll simulate by checking email patterns or use localStorage
+        const userData = { ...session.user };
+        const storedRole = localStorage.getItem(`user_role_${userData.id}`);
+        
+        if (storedRole) {
+          userData.role = storedRole as UserRole;
+        } else if (userData.email?.includes('admin')) {
+          userData.role = 'admin';
+          localStorage.setItem(`user_role_${userData.id}`, 'admin');
+        } else if (userData.email?.includes('parent')) {
+          userData.role = 'parent';
+          localStorage.setItem(`user_role_${userData.id}`, 'parent');
+        } else {
+          userData.role = 'student';
+          localStorage.setItem(`user_role_${userData.id}`, 'student');
+        }
+        
+        setUser(userData);
+      } else {
+        setUser(null);
+      }
       setLoading(false);
     });
 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
+      if (session?.user) {
+        // Same logic as above for role determination
+        const userData = { ...session.user };
+        const storedRole = localStorage.getItem(`user_role_${userData.id}`);
+        
+        if (storedRole) {
+          userData.role = storedRole as UserRole;
+        } else if (userData.email?.includes('admin')) {
+          userData.role = 'admin';
+          localStorage.setItem(`user_role_${userData.id}`, 'admin');
+        } else if (userData.email?.includes('parent')) {
+          userData.role = 'parent';
+          localStorage.setItem(`user_role_${userData.id}`, 'parent');
+        } else {
+          userData.role = 'student';
+          localStorage.setItem(`user_role_${userData.id}`, 'student');
+        }
+        
+        setUser(userData);
+      } else {
+        setUser(null);
+      }
     });
 
     return () => subscription.unsubscribe();
@@ -40,12 +95,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (error) throw error;
   };
 
-  const signUp = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signUp({
+  const signUp = async (email: string, password: string, role: UserRole = 'student') => {
+    const { error, data } = await supabase.auth.signUp({
       email,
       password,
     });
+    
     if (error) throw error;
+    
+    // Store the role in localStorage to simulate a user_roles table
+    if (data.user) {
+      localStorage.setItem(`user_role_${data.user.id}`, role);
+    }
   };
 
   const signOut = async () => {
@@ -54,7 +115,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, signIn, signUp, signOut }}>
+    <AuthContext.Provider value={{ user, loading, signIn, signUp, signOut, isAdmin, isParent }}>
       {!loading && children}
     </AuthContext.Provider>
   );
