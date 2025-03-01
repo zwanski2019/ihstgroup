@@ -34,11 +34,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (session?.user) {
         // In a real app, we would fetch the role from a user_roles table
         // Here we'll simulate by checking email patterns or use localStorage
-        const userData = { ...session.user };
+        const userData = { ...session.user } as AuthUser;
         const storedRole = localStorage.getItem(`user_role_${userData.id}`);
         
         if (storedRole) {
-          userData.role = storedRole as UserRole;
+          // Make sure the stored role is valid
+          const validatedRole = validateRole(storedRole);
+          userData.role = validatedRole;
         } else if (userData.email?.includes('admin')) {
           userData.role = 'admin';
           localStorage.setItem(`user_role_${userData.id}`, 'admin');
@@ -62,11 +64,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
         // Same logic as above for role determination
-        const userData = { ...session.user };
+        const userData = { ...session.user } as AuthUser;
         const storedRole = localStorage.getItem(`user_role_${userData.id}`);
         
         if (storedRole) {
-          userData.role = storedRole as UserRole;
+          // Make sure the stored role is valid
+          const validatedRole = validateRole(storedRole);
+          userData.role = validatedRole;
         } else if (userData.email?.includes('admin')) {
           userData.role = 'admin';
           localStorage.setItem(`user_role_${userData.id}`, 'admin');
@@ -86,6 +90,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     return () => subscription.unsubscribe();
   }, []);
+
+  // Function to validate role string against UserRole type
+  const validateRole = (role: string): UserRole => {
+    const validRoles: UserRole[] = ['admin', 'parent', 'student', 'tutor'];
+    return validRoles.includes(role as UserRole) 
+      ? (role as UserRole) 
+      : 'student'; // Default to student if role is invalid
+  };
 
   const signIn = async (email: string, password: string) => {
     const { error } = await supabase.auth.signInWithPassword({
