@@ -11,7 +11,7 @@ export default function About() {
           <div>
             <h2 className="text-2xl font-semibold mb-4">Our Story</h2>
             <p className="text-muted-foreground">
-              Founded in 2010, Ishtgroup has been at the forefront of business innovation, 
+              Founded in 2021, Ishtgroup has been at the forefront of business innovation, 
               helping organizations transform and grow through strategic consulting and 
               technological solutions.
             </p>

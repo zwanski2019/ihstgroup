@@ -12,6 +12,7 @@ export default function About() {
             <p className="text-muted-foreground">
               International House of Sciences is a premier educational support center in Lac 1, Tunis,
               dedicated to providing comprehensive educational solutions and business consulting services.
+              Established in 2021, we've quickly become a trusted name in educational excellence.
             </p>
           </section>
 

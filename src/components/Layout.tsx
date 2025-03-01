@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle";
 import { useAuth } from "@/contexts/AuthContext";
@@ -168,7 +167,7 @@ export function Layout({ children, section }: LayoutProps) {
             <div>
               <h3 className="text-lg font-semibold mb-4">IHS Group</h3>
               <p className="text-sm text-muted-foreground">
-                The premier educational and business consultancy in Tunisia, providing world-class services since 2010.
+                The premier educational and business consultancy in Tunisia, providing world-class services since 2021.
               </p>
             </div>
             <div>
