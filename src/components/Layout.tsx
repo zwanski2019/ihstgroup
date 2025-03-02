@@ -3,24 +3,22 @@ import { ThemeToggle } from "./ThemeToggle";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "./ui/button";
 import { Globe, BookOpen, User, LogOut, Shield, Users } from "lucide-react";
-import { 
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "./ui/avatar";
-
 interface LayoutProps {
   children: React.ReactNode;
   section?: "ishtgroup" | "tutoring";
 }
-
-export function Layout({ children, section }: LayoutProps) {
-  const { user, signOut, isAdmin, isParent } = useAuth();
-
+export function Layout({
+  children,
+  section
+}: LayoutProps) {
+  const {
+    user,
+    signOut,
+    isAdmin,
+    isParent
+  } = useAuth();
   const handleSignOut = async () => {
     try {
       await signOut();
@@ -28,9 +26,7 @@ export function Layout({ children, section }: LayoutProps) {
       console.error("Error signing out:", error);
     }
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <header className="border-b">
         <nav className="container max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -38,8 +34,7 @@ export function Layout({ children, section }: LayoutProps) {
               IHS Group
             </Link>
             <div className="flex items-center gap-6">
-              {section === "ishtgroup" ? (
-                <>
+              {section === "ishtgroup" ? <>
                   <Link to="/ishtgroup" className="hover:text-primary transition-colors">
                     <span className="hidden md:inline">Home</span>
                     <span className="md:hidden">
@@ -55,9 +50,7 @@ export function Layout({ children, section }: LayoutProps) {
                   <Link to="/ishtgroup/contact" className="hover:text-primary transition-colors">
                     <span className="hidden md:inline">Contact</span>
                   </Link>
-                </>
-              ) : section === "tutoring" ? (
-                <>
+                </> : section === "tutoring" ? <>
                   <Link to="/tutoring" className="hover:text-primary transition-colors">
                     <span className="hidden md:inline">Home</span>
                     <span className="md:hidden">
@@ -73,9 +66,7 @@ export function Layout({ children, section }: LayoutProps) {
                   <Link to="/tutoring/resources" className="hover:text-primary transition-colors">
                     <span className="hidden md:inline">Resources</span>
                   </Link>
-                </>
-              ) : (
-                <>
+                </> : <>
                   <Link to="/ishtgroup" className="hover:text-primary transition-colors">
                     <span className="hidden md:inline">Business Solutions</span>
                     <span className="md:hidden">
@@ -94,12 +85,10 @@ export function Layout({ children, section }: LayoutProps) {
                   <Link to="/contact" className="hover:text-primary transition-colors">
                     <span className="hidden md:inline">Contact</span>
                   </Link>
-                </>
-              )}
+                </>}
               <div className="flex items-center gap-2">
                 <ThemeToggle />
-                {user ? (
-                  <DropdownMenu>
+                {user ? <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" size="icon" className="rounded-full">
                         <Avatar>
@@ -116,23 +105,19 @@ export function Layout({ children, section }: LayoutProps) {
                       </DropdownMenuLabel>
                       <DropdownMenuSeparator />
                       
-                      {isAdmin() && (
-                        <DropdownMenuItem asChild>
+                      {isAdmin() && <DropdownMenuItem asChild>
                           <Link to="/admin/dashboard" className="flex items-center">
                             <Shield className="mr-2 h-4 w-4" />
                             Admin Dashboard
                           </Link>
-                        </DropdownMenuItem>
-                      )}
+                        </DropdownMenuItem>}
                       
-                      {isParent() && (
-                        <DropdownMenuItem asChild>
+                      {isParent() && <DropdownMenuItem asChild>
                           <Link to="/parent/dashboard" className="flex items-center">
                             <Users className="mr-2 h-4 w-4" />
                             Parent Dashboard
                           </Link>
-                        </DropdownMenuItem>
-                      )}
+                        </DropdownMenuItem>}
                       
                       <DropdownMenuItem asChild>
                         <Link to="/dashboard" className="flex items-center">
@@ -147,12 +132,9 @@ export function Layout({ children, section }: LayoutProps) {
                         Sign Out
                       </DropdownMenuItem>
                     </DropdownMenuContent>
-                  </DropdownMenu>
-                ) : (
-                  <Button asChild variant="outline" size="sm">
+                  </DropdownMenu> : <Button asChild variant="outline" size="sm">
                     <Link to="/auth/login">Sign In</Link>
-                  </Button>
-                )}
+                  </Button>}
               </div>
             </div>
           </div>
@@ -228,9 +210,7 @@ export function Layout({ children, section }: LayoutProps) {
           </div>
           <div className="border-t mt-6 pt-6">
             <div className="flex justify-between items-center">
-              <p className="text-sm text-muted-foreground">
-                © 2025 IHS Group. All rights reserved.
-              </p>
+              <p className="text-sm text-muted-foreground">© 2025 IHST Group. All rights reserved.</p>
               <div className="flex gap-4">
                 <Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Privacy Policy
@@ -243,6 +223,5 @@ export function Layout({ children, section }: LayoutProps) {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 }
