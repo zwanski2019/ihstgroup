@@ -492,7 +492,7 @@ export default function Index() {
         <div className="container max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold tracking-tight mb-4">Ready to Get Started?</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join hundreds of satisfied clients who have transformed their businesses and educational journeys with IHS Group.
+            Join hundreds of satisfied clients who have transformed their businesses and educational journeys with IHST Group.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button asChild size="lg">

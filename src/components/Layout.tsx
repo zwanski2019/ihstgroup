@@ -5,10 +5,12 @@ import { Button } from "./ui/button";
 import { Globe, BookOpen, User, LogOut, Shield, Users } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "./ui/avatar";
+
 interface LayoutProps {
   children: React.ReactNode;
   section?: "ishtgroup" | "tutoring";
 }
+
 export function Layout({
   children,
   section
@@ -19,6 +21,7 @@ export function Layout({
     isAdmin,
     isParent
   } = useAuth();
+
   const handleSignOut = async () => {
     try {
       await signOut();
@@ -26,12 +29,13 @@ export function Layout({
       console.error("Error signing out:", error);
     }
   };
+
   return <div className="min-h-screen bg-background">
       <header className="border-b">
         <nav className="container max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="text-2xl font-bold text-gradient">
-              IHS Group
+              IHST Group
             </Link>
             <div className="flex items-center gap-6">
               {section === "ishtgroup" ? <>
@@ -147,7 +151,7 @@ export function Layout({
         <div className="container max-w-7xl mx-auto px-4 py-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-lg font-semibold mb-4">IHS Group</h3>
+              <h3 className="text-lg font-semibold mb-4">IHST Group</h3>
               <p className="text-sm text-muted-foreground">
                 The premier educational and business consultancy in Tunisia, providing world-class services since 2021.
               </p>
