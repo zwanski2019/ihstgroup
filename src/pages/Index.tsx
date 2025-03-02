@@ -160,27 +160,34 @@ export default function Index() {
 
   const topInstructors = [
     {
-      name: "replace with the name of the instructor example:zwanski",
+      name: "Dr. Mohamed Zwanski",
       specialty: "Business Strategy",
       courses: 12,
       students: 4500,
-      rating: 4.9
+      rating: 4.9,
+      image: "/lovable-uploads/5d1618ae-a48b-44bd-8480-e173abb8e89c.png",
+      languages: ["English", "Arabic", "French"]
     },
     {
-      name: "replace with the name of the instructor example:zwanski",
+      name: "Prof. Amina Belhadj",
       specialty: "Applied Mathematics",
       courses: 8,
       students: 3200,
-      rating: 4.8
+      rating: 4.8,
+      image: null,
+      languages: ["Arabic", "French", "English"]
     },
     {
-      name: "replace with the name of the instructor example:zwanski",
-      specialty: "Languages",
+      name: "Dr. Tarek Mansour",
+      specialty: "Languages & Communication",
       courses: 15,
       students: 5600,
-      rating: 4.7
+      rating: 4.7,
+      image: null,
+      languages: ["French", "Arabic", "English", "German"]
     }
   ];
+  
 
   return (
     <Layout>
@@ -371,34 +378,62 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Top Instructors - Udemy-inspired */}
+      {/* Top Instructors - Advanced Cards */}
       <section className="py-16 bg-background">
         <div className="container max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">Meet Our Top Instructors</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {topInstructors.map((instructor, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-all duration-300">
-                <CardHeader>
-                  <div className="mx-auto h-24 w-24 rounded-full bg-muted flex items-center justify-center mb-4">
-                    <Users className="h-12 w-12 text-primary/70" />
-                  </div>
+              <Card key={index} className="group overflow-hidden hover:shadow-lg transition-all duration-300">
+                <div className="overflow-hidden">
+                  {instructor.image ? (
+                    <img 
+                      src={instructor.image} 
+                      alt={instructor.name} 
+                      className="w-full h-48 object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-48 bg-gradient-to-r from-primary/10 to-primary/20 flex items-center justify-center">
+                      <Users className="h-16 w-16 text-primary/70" />
+                    </div>
+                  )}
+                </div>
+                <CardHeader className="pb-2">
                   <CardTitle>{instructor.name}</CardTitle>
                   <p className="text-primary">{instructor.specialty}</p>
+                  <div className="flex items-center mt-2">
+                    <span className="text-amber-500 font-medium mr-1">{instructor.rating}</span>
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <Star 
+                          key={i} 
+                          className={`h-4 w-4 ${i < Math.floor(instructor.rating) ? 'text-amber-500' : 'text-muted'}`} 
+                          fill={i < Math.floor(instructor.rating) ? 'currentColor' : 'none'} 
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex justify-center space-x-4 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className={`h-5 w-5 ${i < Math.floor(instructor.rating) ? 'text-amber-500' : 'text-muted'}`} fill={i < Math.floor(instructor.rating) ? 'currentColor' : 'none'} />
-                    ))}
-                  </div>
-                  <div className="flex justify-around text-sm">
-                    <div>
-                      <p className="font-semibold text-foreground">{instructor.courses}</p>
-                      <p className="text-muted-foreground">Courses</p>
+                  <div className="grid grid-cols-2 gap-4 mb-4">
+                    <div className="bg-muted/30 rounded-md p-3 text-center">
+                      <p className="font-semibold text-lg text-foreground">{instructor.courses}</p>
+                      <p className="text-sm text-muted-foreground">Courses</p>
                     </div>
-                    <div>
-                      <p className="font-semibold text-foreground">{instructor.students.toLocaleString()}</p>
-                      <p className="text-muted-foreground">Students</p>
+                    <div className="bg-muted/30 rounded-md p-3 text-center">
+                      <p className="font-semibold text-lg text-foreground">{instructor.students.toLocaleString()}</p>
+                      <p className="text-sm text-muted-foreground">Students</p>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-4">
+                    <p className="text-sm font-medium mb-2">Languages:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {instructor.languages.map((language, i) => (
+                        <span key={i} className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-full">
+                          {language}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </CardContent>
