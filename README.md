@@ -80,8 +80,12 @@ The project can be deployed using the following methods:
 ## Contact
 
 For questions or suggestions regarding this project, please contact:
-- Mohamed Zwanski (Project Creator)
+- Mohamed Zwanski (IT SUPPORT )
 - IHST Group Team
+- abbes@ishtgroup.com
+- +216 24 225 975
+
+
 
 ## License
 
