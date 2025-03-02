@@ -160,7 +160,7 @@ export default function Index() {
 
   const topInstructors = [
     {
-      name: "Dr. Mohamed Zwanski",
+      name: "Dr. Afef",
       specialty: "Business Strategy",
       courses: 12,
       students: 4500,
