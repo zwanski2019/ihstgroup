@@ -55,7 +55,7 @@ export default function Tutors() {
       subject: "Languages",
       tutors: [
         {
-          name: "Dr. Mohamed Zwanski",
+          name: "Zwanski",
           specialization: "Business Communication",
           experience: "15 years",
           qualifications: "Ph.D. in Communication",
