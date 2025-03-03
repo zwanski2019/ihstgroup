@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle";
 import { useAuth } from "@/contexts/AuthContext";
@@ -5,6 +6,8 @@ import { Button } from "./ui/button";
 import { Globe, BookOpen, User, LogOut, Shield, Users } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "./ui/avatar";
+import { LanguageSelector } from "./LanguageSelector";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -21,6 +24,8 @@ export function Layout({
     isAdmin,
     isParent
   } = useAuth();
+  
+  const { t } = useLanguage();
 
   const handleSignOut = async () => {
     try {
@@ -46,13 +51,13 @@ export function Layout({
                     </span>
                   </Link>
                   <Link to="/ishtgroup/services" className="hover:text-primary transition-colors">
-                    <span className="hidden md:inline">Services</span>
+                    <span className="hidden md:inline">{t('services')}</span>
                   </Link>
                   <Link to="/ishtgroup/about" className="hover:text-primary transition-colors">
-                    <span className="hidden md:inline">About</span>
+                    <span className="hidden md:inline">{t('about')}</span>
                   </Link>
                   <Link to="/ishtgroup/contact" className="hover:text-primary transition-colors">
-                    <span className="hidden md:inline">Contact</span>
+                    <span className="hidden md:inline">{t('contact')}</span>
                   </Link>
                 </> : section === "tutoring" ? <>
                   <Link to="/tutoring" className="hover:text-primary transition-colors">
@@ -72,25 +77,26 @@ export function Layout({
                   </Link>
                 </> : <>
                   <Link to="/ishtgroup" className="hover:text-primary transition-colors">
-                    <span className="hidden md:inline">Business Solutions</span>
+                    <span className="hidden md:inline">{t('businessSolutions')}</span>
                     <span className="md:hidden">
                       <Globe className="h-5 w-5" />
                     </span>
                   </Link>
                   <Link to="/tutoring" className="hover:text-primary transition-colors">
-                    <span className="hidden md:inline">Education</span>
+                    <span className="hidden md:inline">{t('education')}</span>
                     <span className="md:hidden">
                       <BookOpen className="h-5 w-5" />
                     </span>
                   </Link>
                   <Link to="/about" className="hover:text-primary transition-colors">
-                    <span className="hidden md:inline">About</span>
+                    <span className="hidden md:inline">{t('about')}</span>
                   </Link>
                   <Link to="/contact" className="hover:text-primary transition-colors">
-                    <span className="hidden md:inline">Contact</span>
+                    <span className="hidden md:inline">{t('contact')}</span>
                   </Link>
                 </>}
               <div className="flex items-center gap-2">
+                <LanguageSelector />
                 <ThemeToggle />
                 {user ? <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -112,21 +118,21 @@ export function Layout({
                       {isAdmin() && <DropdownMenuItem asChild>
                           <Link to="/admin/dashboard" className="flex items-center">
                             <Shield className="mr-2 h-4 w-4" />
-                            Admin Dashboard
+                            {t('adminPortal')}
                           </Link>
                         </DropdownMenuItem>}
                       
                       {isParent() && <DropdownMenuItem asChild>
                           <Link to="/parent/dashboard" className="flex items-center">
                             <Users className="mr-2 h-4 w-4" />
-                            Parent Dashboard
+                            {t('parentPortal')}
                           </Link>
                         </DropdownMenuItem>}
                       
                       <DropdownMenuItem asChild>
                         <Link to="/dashboard" className="flex items-center">
                           <User className="mr-2 h-4 w-4" />
-                          My Dashboard
+                          {t('studentPortal')}
                         </Link>
                       </DropdownMenuItem>
                       
@@ -137,7 +143,7 @@ export function Layout({
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu> : <Button asChild variant="outline" size="sm">
-                    <Link to="/auth/login">Sign In</Link>
+                    <Link to="/auth/login">{t('signIn')}</Link>
                   </Button>}
               </div>
             </div>
@@ -157,16 +163,16 @@ export function Layout({
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <h3 className="text-lg font-semibold mb-4">{t('quickLinks')}</h3>
               <ul className="space-y-2">
                 <li>
                   <Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    About Us
+                    {t('aboutUs')}
                   </Link>
                 </li>
                 <li>
                   <Link to="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Contact
+                    {t('contact')}
                   </Link>
                 </li>
                 <li>
@@ -177,36 +183,36 @@ export function Layout({
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Services</h3>
+              <h3 className="text-lg font-semibold mb-4">{t('services')}</h3>
               <ul className="space-y-2">
                 <li>
                   <Link to="/ishtgroup/services" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Business Consulting
+                    {t('businessSolutions')}
                   </Link>
                 </li>
                 <li>
                   <Link to="/tutoring/courses" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Educational Programs
+                    {t('education')}
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">User Portals</h3>
+              <h3 className="text-lg font-semibold mb-4">{t('userPortals')}</h3>
               <ul className="space-y-2">
                 <li>
                   <Link to="/admin/dashboard" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Admin Portal
+                    {t('adminPortal')}
                   </Link>
                 </li>
                 <li>
                   <Link to="/parent/dashboard" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Parent Portal
+                    {t('parentPortal')}
                   </Link>
                 </li>
                 <li>
                   <Link to="/dashboard" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Student Portal
+                    {t('studentPortal')}
                   </Link>
                 </li>
               </ul>
@@ -214,13 +220,13 @@ export function Layout({
           </div>
           <div className="border-t mt-6 pt-6">
             <div className="flex justify-between items-center">
-              <p className="text-sm text-muted-foreground">© 2025 IHST Group. All rights reserved.</p>
+              <p className="text-sm text-muted-foreground">{t('footer.rights')}</p>
               <div className="flex gap-4">
                 <Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Privacy Policy
+                  {t('footer.privacyPolicy')}
                 </Link>
                 <Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Terms of Service
+                  {t('footer.termsOfService')}
                 </Link>
               </div>
             </div>

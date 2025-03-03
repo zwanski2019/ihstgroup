@@ -1,8 +1,11 @@
 
 import { Layout } from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Alumni() {
+  const { t } = useLanguage();
+  
   const testimonials = [
     {
       name: "Mays",
@@ -19,52 +22,41 @@ export default function Alumni() {
   return (
     <Layout>
       <div className="max-w-3xl mx-auto space-y-8">
-        <h1 className="text-4xl font-bold tracking-tight">Nos Anciens Élèves</h1>
+        <h1 className="text-4xl font-bold tracking-tight">{t('ourAlumni')}</h1>
         
         <section className="space-y-6">
           <div>
-            <h2 className="text-2xl font-semibold mb-4">Des Performances Exceptionnelles</h2>
+            <h2 className="text-2xl font-semibold mb-4">{t('exceptionalPerformance')}</h2>
             <p className="text-muted-foreground">
-              Au sein de notre Centre de Support Éducatif, nous sommes fiers de compter parmi nos élèves 
-              certains des meilleurs talents. Grâce à notre méthode d'enseignement individualisée et à 
-              l'accompagnement personnalisé que nous offrons, nos élèves progressent de manière remarquable, 
-              tant sur le plan académique que personnel.
+              {t('performanceDescription')}
             </p>
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-4">Nos Résultats Impressionnants !</h2>
+            <h2 className="text-2xl font-semibold mb-4">{t('impressiveResults')}</h2>
             <p className="text-muted-foreground">
-              Les notes de nos élèves témoignent de leur engagement et des progrès accomplis. 
-              En moyenne, nos élèves améliorent leurs résultats significativement en quelques mois seulement. 
-              Que ce soit en mathématiques, en sciences, en langues ou dans d'autres disciplines, 
-              leurs notes s'élèvent continuellement.
+              {t('resultsDescription')}
             </p>
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-4">Suivi et Progrès</h2>
+            <h2 className="text-2xl font-semibold mb-4">{t('followUpProgress')}</h2>
             <p className="text-muted-foreground">
-              Nous suivons de près l'évolution de chaque élève et nous mesurons régulièrement leur 
-              avancement à travers des évaluations personnalisées qui permettent de voir leurs points 
-              forts et les domaines à renforcer. Grâce à cette approche, nous avons pu observer des 
-              améliorations significatives dans :
+              {t('progressDescription')}
             </p>
             <ul className="list-disc pl-6 mt-2 space-y-2 text-muted-foreground">
-              <li><span className="font-medium">Les résultats scolaires :</span> Une hausse constante des moyennes de nos élèves.</li>
-              <li><span className="font-medium">La confiance en soi :</span> Les élèves deviennent plus autonomes et motivés.</li>
-              <li><span className="font-medium">Les compétences en résolution de problèmes :</span> Ils acquièrent des outils solides pour aborder les défis scolaires.</li>
+              <li><span className="font-medium">{t('academicResults')} :</span> {t('academicResultsDetail')}</li>
+              <li><span className="font-medium">{t('selfConfidence')} :</span> {t('selfConfidenceDetail')}</li>
+              <li><span className="font-medium">{t('problemSolving')} :</span> {t('problemSolvingDetail')}</li>
             </ul>
             <p className="text-muted-foreground mt-4">
-              Nous sommes convaincus que chaque élève a le potentiel de réussir, et nous mettons tout en œuvre 
-              pour l'aider à atteindre ses objectifs. Nos résultats en témoignent : les élèves de notre centre 
-              se classent régulièrement parmi les meilleurs de leur niveau.
+              {t('potential')}
             </p>
           </div>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold">Témoignages</h2>
+          <h2 className="text-2xl font-semibold">{t('testimonials')}</h2>
           <div className="grid gap-4 md:grid-cols-2">
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="overflow-hidden">
@@ -80,13 +72,12 @@ export default function Alumni() {
         </section>
 
         <section className="bg-primary/5 p-6 rounded-lg text-center space-y-4">
-          <h2 className="text-2xl font-semibold">Rejoignez-nous !</h2>
+          <h2 className="text-2xl font-semibold">{t('joinUs')}</h2>
           <p className="text-muted-foreground">
-            Nous sommes impatients de vous aider à atteindre votre plein potentiel. 
-            Venez découvrir comment nous pouvons vous accompagner dans votre parcours éducatif.
+            {t('joinUsDescription')}
           </p>
           <p className="font-medium">
-            Contactez-nous dès aujourd'hui pour garantir vos places et commencez à voir la différence !
+            {t('contactToday')}
           </p>
         </section>
       </div>

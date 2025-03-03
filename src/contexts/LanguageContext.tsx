@@ -1,53 +1,67 @@
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
-
-type Language = {
-  code: string;
-  name: string;
-  flag: string;
-};
-
-const languages: Language[] = [
-  { code: "en", name: "English", flag: "🇬🇧" },
-  { code: "fr", name: "Français", flag: "🇫🇷" },
-  { code: "ar", name: "العربية", flag: "🇹🇳" },
-];
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { LanguageCode, TranslationKeys, translations } from '@/translations';
 
 type LanguageContextType = {
-  currentLanguage: Language;
-  setLanguage: (lang: Language) => void;
-  languages: Language[];
+  language: LanguageCode;
+  setLanguage: (language: LanguageCode) => void;
+  t: (key: string, section?: string) => any;
 };
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType>({
+  language: 'en',
+  setLanguage: () => {},
+  t: () => '',
+});
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [currentLanguage, setCurrentLanguage] = useState<Language>(languages[0]);
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [language, setLanguage] = useState<LanguageCode>('en');
 
-  const setLanguage = (lang: Language) => {
-    setCurrentLanguage(lang);
-    // Here you would implement actual language switching logic
-    // like setting cookies, localStorage, or activating i18n
-    console.log(`Language set to ${lang.name}`);
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('language') as LanguageCode | null;
+    if (savedLanguage && Object.keys(translations).includes(savedLanguage)) {
+      setLanguage(savedLanguage);
+    } else {
+      // Set default language based on browser settings if available
+      const browserLang = navigator.language.split('-')[0] as LanguageCode;
+      if (browserLang && Object.keys(translations).includes(browserLang)) {
+        setLanguage(browserLang);
+      }
+    }
+  }, []);
+
+  const handleSetLanguage = (newLanguage: LanguageCode) => {
+    setLanguage(newLanguage);
+    localStorage.setItem('language', newLanguage);
+    document.documentElement.lang = newLanguage;
+  };
+
+  const t = (key: string, section?: string) => {
+    try {
+      const keys = key.split('.');
+      let value: any = translations[language];
+      
+      if (section) {
+        value = value[section];
+      }
+      
+      for (const k of keys) {
+        if (value === undefined) return key;
+        value = value[k];
+      }
+      
+      return value || key;
+    } catch (error) {
+      console.error(`Translation error for key "${key}"`, error);
+      return key;
+    }
   };
 
   return (
-    <LanguageContext.Provider 
-      value={{ 
-        currentLanguage, 
-        setLanguage, 
-        languages 
-      }}
-    >
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );
-}
-
-export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
 };
+
+export const useLanguage = () => useContext(LanguageContext);

@@ -1,11 +1,14 @@
 
 import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Services() {
+  const { t } = useLanguage();
+  
   const subjectCategories = [
     {
-      title: "Langues et Littérature",
+      title: t('categories.languagesLiterature'),
       subjects: [
         "Apprentissage des langues (anglais, espagnol, français, etc.)",
         "Littérature classique et moderne",
@@ -14,7 +17,7 @@ export default function Services() {
       ]
     },
     {
-      title: "Mathématiques",
+      title: t('categories.mathematics'),
       subjects: [
         "Arithmétique",
         "Géométrie",
@@ -24,7 +27,7 @@ export default function Services() {
       ]
     },
     {
-      title: "Sciences",
+      title: t('categories.sciences'),
       subjects: [
         "Biologie",
         "Chimie",
@@ -34,7 +37,7 @@ export default function Services() {
       ]
     },
     {
-      title: "Technologie et Informatique",
+      title: t('categories.technologyComputing'),
       subjects: [
         "Programmation (Python, Java, HTML, etc.)",
         "Cyber sécurité",
@@ -49,18 +52,15 @@ export default function Services() {
     <Layout>
       <div className="space-y-8">
         <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight">Nos Services</h1>
+          <h1 className="text-4xl font-bold tracking-tight">{t('ourServices')}</h1>
           <p className="mt-4 text-xl text-muted-foreground">
-            Qu'est-ce que nous offrons à nos chers étudiants ?
+            {t('whatWeOffer')}
           </p>
         </div>
 
         <div className="max-w-3xl mx-auto">
           <p className="text-muted-foreground mb-8">
-            Nous offrons une panoplie de prestations, selon notre public cible (enfants, étudiants, adultes, 
-            professionnels, etc.). Ces sujets peuvent être adaptés pour différents niveaux, du primaire à 
-            l'université, ou même pour des formations professionnelles. Le contenu peut aussi inclure des 
-            outils interactifs, des quiz, des vidéos, et des forums de discussion pour engager les utilisateurs.
+            {t('servicesDescription')}
           </p>
         </div>
 
