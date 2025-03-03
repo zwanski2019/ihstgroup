@@ -1,43 +1,32 @@
-
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { ArrowRight, Building, Globe, LineChart, Users } from "lucide-react";
-
 export default function Home() {
-  const services = [
-    {
-      title: "Strategic Consulting",
-      description: "Empower your business with data-driven strategies for sustainable growth and market leadership in Tunisia's competitive landscape.",
-      icon: LineChart
-    },
-    {
-      title: "Digital Transformation",
-      description: "Transform your organization with cutting-edge digital solutions tailored to Tunisia's unique business environment and global standards.",
-      icon: Globe
-    },
-    {
-      title: "Organizational Excellence",
-      description: "Optimize your business operations and build high-performing teams using internationally recognized methodologies adapted for Tunisian companies.",
-      icon: Building
-    },
-    {
-      title: "Market Expansion",
-      description: "Expand your Tunisian business regionally and globally with our expert guidance and international network of partners.",
-      icon: Users
-    }
-  ];
-
-  return (
-    <Layout section="ishtgroup">
+  const services = [{
+    title: "Strategic Consulting",
+    description: "Empower your business with data-driven strategies for sustainable growth and market leadership in Tunisia's competitive landscape.",
+    icon: LineChart
+  }, {
+    title: "Digital Transformation",
+    description: "Transform your organization with cutting-edge digital solutions tailored to Tunisia's unique business environment and global standards.",
+    icon: Globe
+  }, {
+    title: "Organizational Excellence",
+    description: "Optimize your business operations and build high-performing teams using internationally recognized methodologies adapted for Tunisian companies.",
+    icon: Building
+  }, {
+    title: "Market Expansion",
+    description: "Expand your Tunisian business regionally and globally with our expert guidance and international network of partners.",
+    icon: Users
+  }];
+  return <Layout section="ishtgroup">
       <div className="space-y-16">
         {/* Hero Section */}
         <div className="text-center space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gradient">Welcome to Ishtgroup</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Tunisia's premier business consultancy, empowering enterprises with innovative solutions and strategic expertise since 2010.
-          </p>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Tunisia's premier business consultancy, empowering enterprises with innovative solutions and strategic expertise since 2021.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg">
               <Link to="/ishtgroup/services">Our Services</Link>
@@ -57,8 +46,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-md transition-all duration-300">
+            {services.map((service, index) => <Card key={index} className="hover:shadow-md transition-all duration-300">
                 <CardHeader className="flex flex-row items-center gap-4">
                   <div className="p-2 rounded-full bg-primary/10">
                     <service.icon className="h-6 w-6 text-primary" />
@@ -68,8 +56,7 @@ export default function Home() {
                 <CardContent>
                   <p className="text-muted-foreground">{service.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
           <div className="text-center">
             <Button asChild variant="outline">
@@ -102,6 +89,5 @@ export default function Home() {
           </Button>
         </div>
       </div>
-    </Layout>
-  );
+    </Layout>;
 }
