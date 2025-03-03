@@ -3,6 +3,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import AdminDashboard from './AdminDashboard';
+import '@testing-library/jest-dom';
 
 // Mock any necessary providers or context
 jest.mock('../../contexts/AuthContext', () => ({

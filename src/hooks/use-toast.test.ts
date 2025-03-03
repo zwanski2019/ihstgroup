@@ -1,6 +1,7 @@
 
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useToast } from './use-toast';
+import '@testing-library/jest-dom';
 
 describe('useToast hook', () => {
   it('should return toast functions and state', () => {

@@ -2,6 +2,7 @@
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
 import { LanguageProvider, useLanguage } from './LanguageContext';
+import '@testing-library/jest-dom';
 
 // Create a test component that uses the language context
 const TestComponent = () => {

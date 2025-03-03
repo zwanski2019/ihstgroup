@@ -23,4 +23,14 @@ module.exports = {
       lines: 80,
     },
   },
+  transform: {
+    '^.+\\.(ts|tsx)$': ['ts-jest', {
+      tsconfig: 'tsconfig.json',
+    }],
+  },
+  globals: {
+    'ts-jest': {
+      isolatedModules: true,
+    }
+  },
 };

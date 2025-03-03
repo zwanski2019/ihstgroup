@@ -2,6 +2,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { LanguageSelector } from './LanguageSelector';
+import '@testing-library/jest-dom';
 
 describe('LanguageSelector component', () => {
   it('renders the language selector component', () => {
