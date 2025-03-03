@@ -1,7 +1,7 @@
 
 # IHST Group - International House of Sciences Tunisia
 
-![IHST Group Logo](/lovable-uploads/5d1618ae-a48b-44bd-8480-e173abb8e89c.png)
+![IHST Group Logo](/[lovable-uploads/5d1618ae-a48b-44bd-8480-e173abb8e89c.png](https://ihstgroup.com/lovable-uploads/5d1618ae-a48b-44bd-8480-e173abb8e89c.png))
 
 ## About This Project
 
