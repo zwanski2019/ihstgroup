@@ -48,5 +48,52 @@ export const fr = {
   testimonials: "Témoignages",
   joinUs: "Rejoignez-nous !",
   joinUsDescription: "Nous sommes impatients de vous aider à atteindre votre plein potentiel. Venez découvrir comment nous pouvons vous accompagner dans votre parcours éducatif.",
-  contactToday: "Contactez-nous dès aujourd'hui pour garantir vos places et commencez à voir la différence !"
-};
+  contactToday: "Contactez-nous dès aujourd'hui pour garantir vos places et commencez à voir la différence !",
+
+  // Tutoring pages
+  home: "Accueil",
+  courses: "Cours",
+  tutors: "Tuteurs",
+  resources: "Ressources",
+  welcomeTutoring: "Bienvenue au Tutorat en Ligne",
+  personalizedLearning: "Des expériences d'apprentissage personnalisées pour la réussite académique",
+  browseCourses: "Parcourir Nos Cours",
+  mathTutoring: "Tutorat en Mathématiques",
+  mathTutoringDesc: "Des tuteurs experts pour tous les niveaux de mathématiques",
+  scienceCourses: "Cours de Sciences",
+  scienceCoursesDesc: "Des cours complets dans diverses disciplines scientifiques",
+  languageLearning: "Apprentissage des Langues",
+  languageLearningDesc: "Maîtrisez de nouvelles langues avec des instructeurs expérimentés",
+  
+  // Resources
+  learningResources: "Ressources d'Apprentissage",
+  accessResources: "Accédez à notre collection complète de matériels d'apprentissage",
+  studyMaterials: "Matériels d'Étude",
+  tools: "Outils",
+  
+  // Tutors
+  ourTutors: "Nos Tuteurs",
+  meetTutors: "Rencontrez nos tuteurs expérimentés et qualifiés",
+  experience: "Expérience",
+  qualifications: "Qualifications",
+  languages: "Langues",
+  
+  // Courses
+  exploreCourses: "Explorez Nos Cours",
+  findPerfectCourse: "Trouvez le cours parfait pour améliorer vos connaissances et compétences",
+  searchCourses: "Rechercher des cours, des sujets ou des instructeurs",
+  search: "Rechercher",
+  browseCategories: "Parcourir les Meilleures Catégories",
+  featuredCourses: "Cours en Vedette",
+  all: "Tous",
+  popular: "Plus Populaires",
+  newest: "Plus Récents",
+  level: "Niveau",
+  duration: "Durée",
+  format: "Format",
+  viewAllCourses: "Voir Tous les Cours",
+  topInstructors: "Nos Meilleurs Instructeurs",
+  allCourses: "Tous les Cours par Catégorie",
+  academicSubjects: "Matières Académiques",
+  languageCourses: "Cours de Langues"
+}

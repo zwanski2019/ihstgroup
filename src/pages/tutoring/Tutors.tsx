@@ -3,8 +3,11 @@ import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star, GraduationCap } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Tutors() {
+  const { t } = useLanguage();
+
   const categories = [
     {
       subject: "Mathematics",
@@ -67,9 +70,9 @@ export default function Tutors() {
     <Layout section="tutoring">
       <div className="space-y-8">
         <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight">Our Tutors</h1>
+          <h1 className="text-4xl font-bold tracking-tight">{t('ourTutors')}</h1>
           <p className="mt-4 text-xl text-muted-foreground">
-            Meet our experienced and qualified tutors
+            {t('meetTutors')}
           </p>
         </div>
 
@@ -106,15 +109,15 @@ export default function Tutors() {
                     <CardContent>
                       <dl className="space-y-2">
                         <div>
-                          <dt className="font-medium">Experience</dt>
+                          <dt className="font-medium">{t('experience')}</dt>
                           <dd className="text-muted-foreground">{tutor.experience}</dd>
                         </div>
                         <div>
-                          <dt className="font-medium">Qualifications</dt>
+                          <dt className="font-medium">{t('qualifications')}</dt>
                           <dd className="text-muted-foreground">{tutor.qualifications}</dd>
                         </div>
                         <div>
-                          <dt className="font-medium">Languages</dt>
+                          <dt className="font-medium">{t('languages')}</dt>
                           <dd className="flex flex-wrap gap-1 mt-1">
                             {tutor.languages.map((language, i) => (
                               <span key={i} className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-full">

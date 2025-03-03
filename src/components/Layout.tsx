@@ -45,7 +45,7 @@ export function Layout({
             <div className="flex items-center gap-6">
               {section === "ishtgroup" ? <>
                   <Link to="/ishtgroup" className="hover:text-primary transition-colors">
-                    <span className="hidden md:inline">Home</span>
+                    <span className="hidden md:inline">{t('home')}</span>
                     <span className="md:hidden">
                       <Globe className="h-5 w-5" />
                     </span>
@@ -61,19 +61,19 @@ export function Layout({
                   </Link>
                 </> : section === "tutoring" ? <>
                   <Link to="/tutoring" className="hover:text-primary transition-colors">
-                    <span className="hidden md:inline">Home</span>
+                    <span className="hidden md:inline">{t('home')}</span>
                     <span className="md:hidden">
                       <BookOpen className="h-5 w-5" />
                     </span>
                   </Link>
                   <Link to="/tutoring/courses" className="hover:text-primary transition-colors">
-                    <span className="hidden md:inline">Courses</span>
+                    <span className="hidden md:inline">{t('courses')}</span>
                   </Link>
                   <Link to="/tutoring/tutors" className="hover:text-primary transition-colors">
-                    <span className="hidden md:inline">Tutors</span>
+                    <span className="hidden md:inline">{t('tutors')}</span>
                   </Link>
                   <Link to="/tutoring/resources" className="hover:text-primary transition-colors">
-                    <span className="hidden md:inline">Resources</span>
+                    <span className="hidden md:inline">{t('resources')}</span>
                   </Link>
                 </> : <>
                   <Link to="/ishtgroup" className="hover:text-primary transition-colors">
@@ -139,7 +139,7 @@ export function Layout({
                       <DropdownMenuSeparator />
                       <DropdownMenuItem onClick={handleSignOut} className="text-red-500">
                         <LogOut className="mr-2 h-4 w-4" />
-                        Sign Out
+                        {t('signIn')}
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu> : <Button asChild variant="outline" size="sm">

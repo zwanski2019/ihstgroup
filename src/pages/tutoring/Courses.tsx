@@ -1,4 +1,3 @@
-
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,8 +11,11 @@ import {
   Users
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Courses() {
+  const { t } = useLanguage();
+  
   const categories = [
     {
       name: "Academic",
@@ -128,9 +130,9 @@ export default function Courses() {
       <div className="space-y-10">
         {/* Title Section */}
         <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight">Explore Our Courses</h1>
+          <h1 className="text-4xl font-bold tracking-tight">{t('exploreCourses')}</h1>
           <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto">
-            Find the perfect course to enhance your knowledge and skills
+            {t('findPerfectCourse')}
           </p>
         </div>
 
@@ -141,18 +143,18 @@ export default function Courses() {
               <Search className="h-5 w-5 text-muted-foreground" />
             </div>
             <Input 
-              placeholder="Search for courses, topics, or instructors" 
+              placeholder={t('searchCourses')} 
               className="pl-10"
             />
             <Button className="absolute right-0 top-0 bottom-0 rounded-l-none">
-              Search
+              {t('search')}
             </Button>
           </div>
         </div>
 
         {/* Browse Categories Section */}
         <section>
-          <h2 className="text-2xl font-bold mb-6">Browse Top Categories</h2>
+          <h2 className="text-2xl font-bold mb-6">{t('browseCategories')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {categories.map((category, index) => (
               <div key={index} className={`flex flex-col items-center p-6 ${category.color} rounded-lg hover:shadow-md transition-all cursor-pointer hover:-translate-y-1`}>
@@ -167,12 +169,12 @@ export default function Courses() {
         {/* Featured Courses Section */}
         <section>
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold">Featured Courses</h2>
+            <h2 className="text-2xl font-bold">{t('featuredCourses')}</h2>
             <Tabs defaultValue="all">
               <TabsList>
-                <TabsTrigger value="all">All</TabsTrigger>
-                <TabsTrigger value="popular">Most Popular</TabsTrigger>
-                <TabsTrigger value="new">Newest</TabsTrigger>
+                <TabsTrigger value="all">{t('all')}</TabsTrigger>
+                <TabsTrigger value="popular">{t('popular')}</TabsTrigger>
+                <TabsTrigger value="new">{t('newest')}</TabsTrigger>
               </TabsList>
             </Tabs>
           </div>
@@ -216,13 +218,13 @@ export default function Courses() {
           </div>
           
           <div className="text-center mt-8">
-            <Button>View All Courses</Button>
+            <Button>{t('viewAllCourses')}</Button>
           </div>
         </section>
 
         {/* Top Instructors Section */}
         <section className="bg-muted/30 p-8 rounded-lg">
-          <h2 className="text-2xl font-bold mb-6 text-center">Our Top Instructors</h2>
+          <h2 className="text-2xl font-bold mb-6 text-center">{t('topInstructors')}</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {topInstructors.map((instructor, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-all duration-300">
@@ -260,11 +262,11 @@ export default function Courses() {
 
         {/* Original course listings */}
         <section className="border-t pt-10">
-          <h2 className="text-2xl font-bold mb-6">All Courses by Category</h2>
+          <h2 className="text-2xl font-bold mb-6">{t('allCourses')}</h2>
           <div className="space-y-12">
             {/* Academic Subjects */}
             <div className="space-y-6">
-              <h3 className="text-xl font-semibold">Academic Subjects</h3>
+              <h3 className="text-xl font-semibold">{t('academicSubjects')}</h3>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <Card>
                   <CardHeader>
@@ -334,7 +336,7 @@ export default function Courses() {
             
             {/* Language Courses */}
             <div className="space-y-6">
-              <h3 className="text-xl font-semibold">Language Courses</h3>
+              <h3 className="text-xl font-semibold">{t('languageCourses')}</h3>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <Card>
                   <CardHeader>

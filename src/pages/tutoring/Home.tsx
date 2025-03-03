@@ -3,22 +3,25 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
+  const { t } = useLanguage();
+  
   const features = [
     {
-      title: "Math Tutoring",
-      description: "Expert tutors for all levels of mathematics",
+      title: t('mathTutoring'),
+      description: t('mathTutoringDesc'),
       subjects: ["Algebra", "Calculus", "Geometry", "Statistics"]
     },
     {
-      title: "Science Courses",
-      description: "Comprehensive courses in various scientific disciplines",
+      title: t('scienceCourses'),
+      description: t('scienceCoursesDesc'),
       subjects: ["Physics", "Chemistry", "Biology", "Environmental Science"]
     },
     {
-      title: "Language Learning",
-      description: "Master new languages with experienced instructors",
+      title: t('languageLearning'),
+      description: t('languageLearningDesc'),
       subjects: ["English", "French", "Arabic", "German"]
     }
   ];
@@ -27,12 +30,12 @@ export default function Home() {
     <Layout section="tutoring">
       <div className="space-y-8">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight">Welcome to Online Tutoring</h1>
+          <h1 className="text-4xl font-bold tracking-tight">{t('welcomeTutoring')}</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Personalized learning experiences for academic success
+            {t('personalizedLearning')}
           </p>
           <Button asChild size="lg">
-            <Link to="/tutoring/courses">Browse Our Courses</Link>
+            <Link to="/tutoring/courses">{t('browseCourses')}</Link>
           </Button>
         </div>
 

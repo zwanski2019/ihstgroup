@@ -48,5 +48,52 @@ export const en = {
   testimonials: "Testimonials",
   joinUs: "Join Us!",
   joinUsDescription: "We're eager to help you reach your full potential. Come discover how we can support you in your educational journey.",
-  contactToday: "Contact us today to secure your spot and start seeing the difference!"
-};
+  contactToday: "Contact us today to secure your spot and start seeing the difference!",
+
+  // Tutoring pages
+  home: "Home",
+  courses: "Courses",
+  tutors: "Tutors",
+  resources: "Resources",
+  welcomeTutoring: "Welcome to Online Tutoring",
+  personalizedLearning: "Personalized learning experiences for academic success",
+  browseCourses: "Browse Our Courses",
+  mathTutoring: "Math Tutoring",
+  mathTutoringDesc: "Expert tutors for all levels of mathematics",
+  scienceCourses: "Science Courses",
+  scienceCoursesDesc: "Comprehensive courses in various scientific disciplines",
+  languageLearning: "Language Learning",
+  languageLearningDesc: "Master new languages with experienced instructors",
+  
+  // Resources
+  learningResources: "Learning Resources",
+  accessResources: "Access our comprehensive collection of learning materials",
+  studyMaterials: "Study Materials",
+  tools: "Tools",
+  
+  // Tutors
+  ourTutors: "Our Tutors",
+  meetTutors: "Meet our experienced and qualified tutors",
+  experience: "Experience",
+  qualifications: "Qualifications",
+  languages: "Languages",
+  
+  // Courses
+  exploreCourses: "Explore Our Courses",
+  findPerfectCourse: "Find the perfect course to enhance your knowledge and skills",
+  searchCourses: "Search for courses, topics, or instructors",
+  search: "Search",
+  browseCategories: "Browse Top Categories",
+  featuredCourses: "Featured Courses",
+  all: "All",
+  popular: "Most Popular",
+  newest: "Newest",
+  level: "Level",
+  duration: "Duration",
+  format: "Format",
+  viewAllCourses: "View All Courses",
+  topInstructors: "Our Top Instructors",
+  allCourses: "All Courses by Category",
+  academicSubjects: "Academic Subjects",
+  languageCourses: "Language Courses"
+}

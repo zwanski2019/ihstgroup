@@ -1,15 +1,18 @@
 
 import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Resources() {
+  const { t } = useLanguage();
+  
   const categories = [
     {
-      title: "Study Materials",
+      title: t('studyMaterials'),
       items: ["Practice Tests", "Video Lectures", "Interactive Exercises", "Study Guides"]
     },
     {
-      title: "Tools",
+      title: t('tools'),
       items: ["Scientific Calculator", "Formula Sheet", "Writing Guidelines", "Citation Tools"]
     }
   ];
@@ -18,9 +21,9 @@ export default function Resources() {
     <Layout section="tutoring">
       <div className="space-y-8">
         <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight">Learning Resources</h1>
+          <h1 className="text-4xl font-bold tracking-tight">{t('learningResources')}</h1>
           <p className="mt-4 text-xl text-muted-foreground">
-            Access our comprehensive collection of learning materials
+            {t('accessResources')}
           </p>
         </div>
 
