@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,6 +15,8 @@ import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import Services from "./pages/Services";
+import Alumni from "./pages/Alumni";
 
 // IshtGroup Pages
 import IshtGroupHome from "./pages/ishtgroup/Home";
@@ -48,6 +51,8 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/faq" element={<FAQ />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/alumni" element={<Alumni />} />
                 <Route path="/auth/login" element={<Login />} />
                 <Route path="/auth/register" element={<Register />} />
 
