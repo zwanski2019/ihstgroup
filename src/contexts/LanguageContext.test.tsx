@@ -6,13 +6,13 @@ import '@testing-library/jest-dom';
 
 // Create a test component that uses the language context
 const TestComponent = () => {
-  const { currentLanguage, setLanguage, languages } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   
   return (
     <div>
-      <div data-testid="current-language">{currentLanguage.name}</div>
+      <div data-testid="current-language">{language}</div>
       <button 
-        onClick={() => setLanguage(languages[1])} 
+        onClick={() => setLanguage('fr')} 
         data-testid="change-language"
       >
         Change to French
@@ -30,7 +30,7 @@ describe('LanguageContext', () => {
     );
     
     // Default language should be English
-    expect(screen.getByTestId('current-language').textContent).toBe('English');
+    expect(screen.getByTestId('current-language').textContent).toBe('en');
   });
 
   it('allows changing the language', () => {
@@ -46,7 +46,7 @@ describe('LanguageContext', () => {
     });
     
     // Language should now be French
-    expect(screen.getByTestId('current-language').textContent).toBe('Français');
+    expect(screen.getByTestId('current-language').textContent).toBe('fr');
   });
 
   it('throws an error when used outside LanguageProvider', () => {
