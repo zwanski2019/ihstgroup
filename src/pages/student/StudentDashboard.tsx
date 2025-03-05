@@ -1,4 +1,3 @@
-
 import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -8,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { toast } from "sonner";
 
 export default function StudentDashboard() {
   const { t } = useLanguage();
@@ -17,6 +17,7 @@ export default function StudentDashboard() {
   useEffect(() => {
     // Redirect unauthenticated users to login
     if (!user) {
+      toast.error("Please sign in to access the student dashboard");
       navigate('/auth/login');
     }
   }, [user, navigate]);

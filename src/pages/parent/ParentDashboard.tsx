@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom';
 import { Layout } from '@/components/Layout';
 import { useAuth } from '@/contexts/AuthContext';
@@ -8,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Users, Calendar, BookOpen, GraduationCap, Clock } from 'lucide-react';
 import { toast } from 'sonner';
+import { useEffect } from 'react';
 
 // Mock data for the parent dashboard
 const mockChildren = [
@@ -47,12 +47,20 @@ export default function ParentDashboard() {
   const { user, isParent } = useAuth();
   const navigate = useNavigate();
 
-  // Redirect if not parent
-  if (!isParent()) {
-    toast.error('You do not have permission to access this page');
-    setTimeout(() => navigate('/'), 1000);
-    return null;
-  }
+  useEffect(() => {
+    // Check if user is authenticated
+    if (!user) {
+      toast.error('Please sign in to access the parent dashboard');
+      navigate('/auth/login');
+      return;
+    }
+    
+    // Check if user has parent role
+    if (!isParent()) {
+      toast.error('You need parent permissions to access this page');
+      navigate('/');
+    }
+  }, [user, isParent, navigate]);
 
   return (
     <Layout section="tutoring">

@@ -2,6 +2,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { User } from '@supabase/supabase-js';
+import { toast } from 'sonner';
 
 export type UserRole = 'admin' | 'parent' | 'student' | 'tutor';
 
@@ -17,6 +18,8 @@ interface AuthContextType {
   signOut: () => Promise<void>;
   isAdmin: () => boolean;
   isParent: () => boolean;
+  isStudent: () => boolean;
+  setUserRole: (role: UserRole) => void;
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
@@ -28,6 +31,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Helper functions to check roles
   const isAdmin = () => user?.role === 'admin';
   const isParent = () => user?.role === 'parent';
+  const isStudent = () => user?.role === 'student' || (!isAdmin() && !isParent());
+
+  // Function to manually set user role (for testing)
+  const setUserRole = (role: UserRole) => {
+    if (user) {
+      const updatedUser = { ...user, role };
+      setUser(updatedUser);
+      localStorage.setItem(`user_role_${user.id}`, role);
+      toast.success(`Role changed to ${role}`);
+    }
+  };
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -127,7 +141,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, signIn, signUp, signOut, isAdmin, isParent }}>
+    <AuthContext.Provider value={{ 
+      user, 
+      loading, 
+      signIn, 
+      signUp, 
+      signOut, 
+      isAdmin, 
+      isParent, 
+      isStudent,
+      setUserRole 
+    }}>
       {!loading && children}
     </AuthContext.Provider>
   );

@@ -1,12 +1,12 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Layout } from '@/components/Layout';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { 
   Users, UserPlus, UserCheck, Shield, Settings, Database,
   BookOpen, School, GraduationCap, Calendar 
@@ -37,12 +37,20 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('overview');
 
-  // Redirect if not admin
-  if (!isAdmin()) {
-    toast.error('You do not have permission to access this page');
-    setTimeout(() => navigate('/'), 1000);
-    return null;
-  }
+  useEffect(() => {
+    // Check if user is authenticated
+    if (!user) {
+      toast.error('Please sign in to access the admin dashboard');
+      navigate('/auth/login');
+      return;
+    }
+    
+    // Check if user has admin role
+    if (!isAdmin()) {
+      toast.error('You need administrator permissions to access this page');
+      navigate('/');
+    }
+  }, [user, isAdmin, navigate]);
 
   const handleAddUser = (type: string) => {
     toast.success(`New ${type} account creation form would open here`);

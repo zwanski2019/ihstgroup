@@ -8,6 +8,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { LanguageSelector } from "./LanguageSelector";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { RoleSwitcher } from "./RoleSwitcher";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -98,6 +99,7 @@ export function Layout({
               <div className="flex items-center gap-2">
                 <LanguageSelector />
                 <ThemeToggle />
+                {user && <RoleSwitcher />}
                 {user ? <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" size="icon" className="rounded-full">
@@ -139,7 +141,7 @@ export function Layout({
                       <DropdownMenuSeparator />
                       <DropdownMenuItem onClick={handleSignOut} className="text-red-500">
                         <LogOut className="mr-2 h-4 w-4" />
-                        {t('signIn')}
+                        {t('signOut')}
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu> : <Button asChild variant="outline" size="sm">
