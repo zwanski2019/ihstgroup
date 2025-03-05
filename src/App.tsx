@@ -34,6 +34,7 @@ import TutoringResources from "./pages/tutoring/Resources";
 // Admin Pages
 import AdminDashboard from '@/pages/admin/AdminDashboard';
 import ParentDashboard from '@/pages/parent/ParentDashboard';
+import StudentDashboard from '@/pages/student/StudentDashboard';
 
 const queryClient = new QueryClient();
 
@@ -73,6 +74,7 @@ function App() {
                   {/* Admin Routes */}
                   <Route path="/admin/dashboard" element={<AdminDashboard />} />
                   <Route path="/parent/dashboard" element={<ParentDashboard />} />
+                  <Route path="/dashboard" element={<StudentDashboard />} />
 
                   {/* Catch-all route for 404 */}
                   <Route path="*" element={<NotFound />} />

@@ -15,11 +15,14 @@ import {
   Clock,
   BookOpen,
   Shield,
-  Users as User
+  User
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Index() {
+  const { t } = useLanguage();
+  
   const businessFeatures = [
     {
       title: "Strategic Consulting",
@@ -187,7 +190,6 @@ export default function Index() {
       languages: ["French", "Arabic", "English", "German"]
     }
   ];
-  
 
   return (
     <Layout>
@@ -234,7 +236,7 @@ export default function Index() {
       {/* Category Browsing - Udemy-inspired */}
       <section className="py-12 bg-muted/30">
         <div className="container max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">Browse Top Categories</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">{t('browseTopCategories')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {categories.map((category, index) => (
               <Link to="/tutoring/courses" key={index} className="block">
@@ -298,7 +300,7 @@ export default function Index() {
       {/* User Portal Access Section - New */}
       <section className="py-12 bg-gradient-to-r from-primary/5 to-background">
         <div className="container max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">Access User Portals</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">{t('accessUserPortals')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="hover:shadow-lg transition-all hover:-translate-y-1">
               <CardHeader>
@@ -306,15 +308,15 @@ export default function Index() {
                   <div className="p-2 rounded-lg bg-primary/10">
                     <Shield className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle>Admin Portal</CardTitle>
+                  <CardTitle>{t('adminPortal')}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
-                  Access the administration dashboard to manage users, courses, and platform settings.
+                  {t('adminPortalDescription')}
                 </p>
-                <Button asChild variant="outline" className="w-full">
-                  <Link to="/admin/dashboard">Access Admin Portal</Link>
+                <Button asChild className="w-full">
+                  <Link to="/admin/dashboard">{t('accessAdminPortal')}</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -325,15 +327,15 @@ export default function Index() {
                   <div className="p-2 rounded-lg bg-primary/10">
                     <Users className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle>Parent Portal</CardTitle>
+                  <CardTitle>{t('parentPortal')}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
-                  Monitor your children's progress, manage enrollments, and communicate with tutors.
+                  {t('parentPortalDescription')}
                 </p>
-                <Button asChild variant="outline" className="w-full">
-                  <Link to="/parent/dashboard">Access Parent Portal</Link>
+                <Button asChild className="w-full">
+                  <Link to="/parent/dashboard">{t('accessParentPortal')}</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -344,15 +346,15 @@ export default function Index() {
                   <div className="p-2 rounded-lg bg-primary/10">
                     <User className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle>Student Portal</CardTitle>
+                  <CardTitle>{t('studentPortal')}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
-                  Access your courses, track your progress, and engage with learning materials.
+                  {t('studentPortalDescription')}
                 </p>
-                <Button asChild variant="outline" className="w-full">
-                  <Link to="/dashboard">Access Student Portal</Link>
+                <Button asChild className="w-full">
+                  <Link to="/dashboard">{t('accessStudentPortal')}</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -452,7 +454,7 @@ export default function Index() {
       <section className="py-16">
         <div className="container max-w-7xl mx-auto px-4">
           <div className="text-center mb-12 space-y-4">
-            <h2 className="text-3xl font-bold tracking-tight">Business Solutions</h2>
+            <h2 className="text-3xl font-bold tracking-tight">{t('businessSolutions')}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Empowering businesses with innovative solutions and strategic guidance for sustainable growth and success
             </p>
@@ -489,7 +491,7 @@ export default function Index() {
       <section className="py-16 bg-muted/50">
         <div className="container max-w-7xl mx-auto px-4">
           <div className="text-center mb-12 space-y-4">
-            <h2 className="text-3xl font-bold tracking-tight">Educational Excellence</h2>
+            <h2 className="text-3xl font-bold tracking-tight">{t('educationalExcellence')}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Transform your learning journey with personalized education programs and expert guidance
             </p>
@@ -525,16 +527,16 @@ export default function Index() {
       {/* Contact Section */}
       <section className="py-20 bg-gradient-to-br from-primary/5 to-background">
         <div className="container max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold tracking-tight mb-4">Ready to Get Started?</h2>
+          <h2 className="text-3xl font-bold tracking-tight mb-4">{t('readyToGetStarted')}</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Join hundreds of satisfied clients who have transformed their businesses and educational journeys with IHST Group.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button asChild size="lg">
-              <Link to="/contact">Contact Us</Link>
+              <Link to="/contact">{t('contactUs')}</Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link to="/about">Learn More</Link>
+              <Link to="/about">{t('learnMore')}</Link>
             </Button>
           </div>
         </div>
