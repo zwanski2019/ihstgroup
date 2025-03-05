@@ -1,3 +1,4 @@
+
 export default {
   home: "Accueil",
   services: "Services",
@@ -6,6 +7,12 @@ export default {
   courses: "Cours",
   tutors: "Tuteurs",
   resources: "Ressources",
+  faq: "FAQ",
+  signIn: "Se connecter",
+  signOut: "Se déconnecter",
+  signUp: "S'inscrire",
+  profile: "Profil",
+  dashboard: "Tableau de bord",
   businessSolutions: "Solutions d'affaires",
   education: "Éducation",
   aboutUs: "À propos de nous",
@@ -14,30 +21,18 @@ export default {
   adminPortal: "Portail administrateur",
   parentPortal: "Portail parent",
   studentPortal: "Portail étudiant",
-  signIn: "Se connecter",
   adminPortalDescription: "Accédez au tableau de bord d'administration pour gérer les utilisateurs, les cours et les paramètres de la plateforme.",
   parentPortalDescription: "Surveillez les progrès de vos enfants, gérez les inscriptions et communiquez avec les tuteurs.",
   studentPortalDescription: "Accédez à vos cours, suivez votre progression et interagissez avec les supports d'apprentissage.",
   accessAdminPortal: "Accéder au portail administrateur",
   accessParentPortal: "Accéder au portail parent",
   accessStudentPortal: "Accéder au portail étudiant",
+  accessUserPortals: "Accéder aux Portails Utilisateurs",
   footer: {
     rights: "© 2024 IHST Group. Tous droits réservés.",
     privacyPolicy: "Politique de confidentialité",
     termsOfService: "Conditions d'utilisation",
   },
-
-  // User Portals
-  accessUserPortals: "Accéder aux Portails Utilisateurs",
-  adminPortal: "Portail Administrateur",
-  adminPortalDescription: "Accédez au tableau de bord d'administration pour gérer les utilisateurs, les cours et les paramètres de la plateforme.",
-  accessAdminPortal: "Accéder au Portail Admin",
-  parentPortal: "Portail Parent",
-  parentPortalDescription: "Suivez les progrès de vos enfants, gérez les inscriptions et communiquez avec les tuteurs.",
-  accessParentPortal: "Accéder au Portail Parent",
-  studentPortal: "Portail Étudiant",
-  studentPortalDescription: "Accédez à vos cours, suivez votre progression et interagissez avec les supports d'apprentissage.",
-  accessStudentPortal: "Accéder au Portail Étudiant",
 
   // Student Dashboard
   studentDashboard: "Tableau de Bord Étudiant",

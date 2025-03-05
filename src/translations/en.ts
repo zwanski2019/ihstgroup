@@ -1,3 +1,4 @@
+
 export default {
   home: "Home",
   services: "Services",
@@ -23,23 +24,15 @@ export default {
   adminPortalDescription: "Access the administration dashboard to manage users, courses, and platform settings.",
   parentPortalDescription: "Monitor your children's progress, manage enrollments, and communicate with tutors.",
   studentPortalDescription: "Access your courses, track your progress, and engage with learning materials.",
+  accessAdminPortal: "Access Admin Portal",
+  accessParentPortal: "Access Parent Portal",
+  accessStudentPortal: "Access Student Portal",
+  accessUserPortals: "Access User Portals",
   footer: {
     rights: "© 2024 IHST Group. All rights reserved.",
     privacyPolicy: "Privacy Policy",
     termsOfService: "Terms of Service",
   },
-
-  // User Portals
-  accessUserPortals: "Access User Portals",
-  adminPortal: "Admin Portal",
-  adminPortalDescription: "Access the administration dashboard to manage users, courses, and platform settings.",
-  accessAdminPortal: "Access Admin Portal",
-  parentPortal: "Parent Portal",
-  parentPortalDescription: "Monitor your children's progress, manage enrollments, and communicate with tutors.",
-  accessParentPortal: "Access Parent Portal",
-  studentPortal: "Student Portal",
-  studentPortalDescription: "Access your courses, track your progress, and engage with learning materials.",
-  accessStudentPortal: "Access Student Portal",
 
   // Student Dashboard
   studentDashboard: "Student Dashboard",

@@ -1,6 +1,6 @@
 
-import { en } from './en';
-import { fr } from './fr';
+import en from './en';
+import fr from './fr';
 
 export type TranslationKeys = typeof en;
 
