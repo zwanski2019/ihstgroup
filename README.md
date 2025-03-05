@@ -133,4 +133,4 @@ This project is available for community contributions while maintaining attribut
 
 ---
 
-© 2024 IHST Group. All rights reserved.
+© 2025 IHST Group. All rights reserved.
