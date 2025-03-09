@@ -1,7 +1,11 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = 'https://ihsgroup.supabase.co';
-const supabaseKey = 'sbp_236557b18d2edaac2dbb026f7825ba3ec10cc456';
+
+import { createClient } from '@supabase/supabase-js';
+
+// Récupérer les informations depuis les variables d'environnement
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY;
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
