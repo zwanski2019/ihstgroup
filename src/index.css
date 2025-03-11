@@ -1,6 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
 @tailwind base;
 @tailwind components;
@@ -86,5 +87,29 @@
 
 .text-gradient-secondary {
   @apply bg-gradient-to-br from-secondary via-secondary/90 to-secondary/70 bg-clip-text text-transparent;
+}
+
+/* Split Landing Page Specific Styles */
+body.split-landing {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .split {
+    width: 100% !important;
+  }
+  
+  .container {
+    flex-direction: column;
+  }
 }
 
