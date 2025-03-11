@@ -39,6 +39,9 @@ import StudentDashboard from '@/pages/student/StudentDashboard';
 
 const queryClient = new QueryClient();
 
+// Get base path from Vite config
+const basePath = import.meta.env.BASE_URL || '/';
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
@@ -48,7 +51,7 @@ function App() {
             <TooltipProvider>
               <Toaster />
               <Sonner />
-              <BrowserRouter>
+              <BrowserRouter basename={basePath}>
                 <Routes>
                   {/* Main Routes */}
                   <Route path="/" element={<SplitLanding />} />
