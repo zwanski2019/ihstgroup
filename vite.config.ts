@@ -21,4 +21,6 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Add base config for GitHub Pages deployment
+  base: "/ihst-group/", // Update this to match your repository name
 }));
